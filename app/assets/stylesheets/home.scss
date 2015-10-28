@@ -1,0 +1,97 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//ヘッダーナビゲーション
+.nav_box {
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.nav_wrapper {
+  position: relative;
+}
+
+.sub_navbar{
+  position: absolute;
+  right: 0px;
+  padding-right: 30px;
+}
+
+ul.sub_nav {
+  li {
+    float: right;
+    background-color: rgb(64, 69, 71);
+    color: #fff;
+    font-size: 80%;
+    line-height: 1.8em;
+    padding: 0 5px;
+  }
+  li + li {
+    margin-right: 10px;
+  }
+}
+
+
+// フッター
+.panel_box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
+  background-color: #eee;
+
+  .panel-body{
+    padding: 0px;
+    position: relative;
+
+    .cd_infobox {
+      img.naxos_image{
+        width: 50px;
+        height: 50px;
+        float: left;
+      }
+      .cd_description{
+        float: left;
+        margin-left: 8px;
+        p.cd_song_artist{
+          margin: 0px;
+        }
+      }
+    }
+    .current_song_concerts {
+      position: absolute;
+      right: 0;
+      border-left: solid 7px rgb(114, 219, 242);
+      color: rgb(114, 219, 242);
+      height: 100%;
+      width: 400px;
+      background-color: #fff;
+      padding-left: 10px;
+
+      .concerts_date {
+        float: left;
+        .divide_line {
+          margin: -20px 0 0 10px;
+          font-size: 260%;
+        }
+        .day {
+          font-size: 200%;
+          margin-top: -40px;
+          margin-left: 18px;
+        }
+      }
+      .concerts_artists{
+        float: left;
+        margin-left: 7px;
+      }
+    }
+  }
+}
