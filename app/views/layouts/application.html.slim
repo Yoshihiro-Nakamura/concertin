@@ -102,11 +102,10 @@ html lang="ja" ng-app="concertIn"
                       player.playVideo();
                       $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', 'rgb(125, 244, 130)');
                       console.log(playCount)
-                      $.ajax({
-                        url: 'api/song_groups/search',
+                      $.ajax('songs/search', {
                         type: 'GET',
                         data: {videoId: video_list[playCount]}
-                      })
+                      });
                   }
 
                   // $('.concert-box ul li:eq(2)').css('backgroundColor', 'red');
