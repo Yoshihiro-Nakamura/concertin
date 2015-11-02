@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//共通で使うもの
+.visible {
+  visibility: visible!important;
+}
 
 //ヘッダーナビゲーション
 .nav_box {
@@ -92,10 +96,15 @@ ul.sub_nav {
         float: left;
         margin-left: 7px;
       }
+      .other_concerts {
+        float:right;
+        visibility: hidden;
+      }
     }
   }
 }
 
 #player {
   float: left;
+  // display: none;
 }
