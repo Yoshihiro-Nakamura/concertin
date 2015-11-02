@@ -43,8 +43,8 @@ html lang="ja" ng-app="concertIn"
                   player = new YT.Player(
                       'player',
                       {
-                          width: '140',
-                          height: '80',
+                          width: '160',
+                          height: '100',
                           videoId: video_list[0],
                           playerVars: {
                               rel: 1,
@@ -70,14 +70,18 @@ html lang="ja" ng-app="concertIn"
 
                   // play video
                   function onPlayerReady(e) {
-                      console.log('onPlayerReady');
                       $('.concert-box ul li:eq(0)').css('backgroundColor', 'rgb(125, 244, 130)')
                       //ajax
                       $.ajax({
                         url: 'songs/search',
                         type: 'GET',
                         data: {videoId: video_list[playCount]}
-                      })
+                      });
+                      $.ajax('concerts/search', {
+                        type: 'GET',
+                        data: {videoId: video_list[playCount]}
+                      });
+
                   }
 
                   function error(e) {
@@ -101,8 +105,11 @@ html lang="ja" ng-app="concertIn"
                       player.loadVideoById(video_list[playCount]);
                       player.playVideo();
                       $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', 'rgb(125, 244, 130)');
-                      console.log(playCount)
                       $.ajax('songs/search', {
+                        type: 'GET',
+                        data: {videoId: video_list[playCount]}
+                      });
+                      $.ajax('concerts/search', {
                         type: 'GET',
                         data: {videoId: video_list[playCount]}
                       });
