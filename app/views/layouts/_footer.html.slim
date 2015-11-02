@@ -4,20 +4,25 @@
       = image_tag("test_naxos.jpg", class: 'naxos_image')
       .cd_description
         p.cd_song_title
-          |ドヴォルザーク：交響曲第９番「新世界より」
+          |
         p.cd_song_artist
-          |ボルティモア響／オールソップ
+          |
     #player
     .current_song_concerts
       .concerts_date
         .month
-          |11
+          |
         .divide_line
-          |/
+          |
         .day
-          |16
+          |
       .concerts_artists
-        p
-          |新日本フィル
-        p
-          |海老原光
+        p.orchestra_name
+          |
+        p.conductor_name
+          |
+      .dropup.other_concerts
+        button.btn.btn-default.dropdown-toggle.count_concert type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          |
+          span.caret
+        ul.dropdown-menu.other_concert_lists aria-labelledby="dropdownMenu2"
