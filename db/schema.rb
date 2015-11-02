@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022080549) do
+ActiveRecord::Schema.define(version: 20151101162951) do
 
   create_table "artist_concerts", force: :cascade do |t|
     t.integer  "artist_id",     limit: 4
@@ -50,16 +50,17 @@ ActiveRecord::Schema.define(version: 20151022080549) do
   end
 
   create_table "concerts", force: :cascade do |t|
-    t.string   "title",         limit: 255
-    t.datetime "start_dateime"
+    t.string   "title",          limit: 255
+    t.datetime "start_datetime"
     t.time     "open_time"
-    t.integer  "hall_id",       limit: 4
-    t.integer  "orchestra_id",  limit: 4
-    t.integer  "conductor_id",  limit: 4
-    t.string   "price",         limit: 255
-    t.string   "link_url",      limit: 255
+    t.integer  "hall_id",        limit: 4
+    t.integer  "orchestra_id",   limit: 4
+    t.integer  "conductor_id",   limit: 4
+    t.string   "price",          limit: 255
+    t.string   "link_url",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "main_song_id",   limit: 4
   end
 
   create_table "conductors", force: :cascade do |t|
