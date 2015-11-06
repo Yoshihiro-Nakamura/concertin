@@ -15,6 +15,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require_directory ./angular
 //= require angular.min
+//= require angular-resource.min
+//= require angular-route.min
 //= require app
 //= require_tree .
