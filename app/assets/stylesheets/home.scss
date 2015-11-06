@@ -3,13 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //共通で使うもの
+
+body {
+  padding-top: 90px;
+  padding-bottom: 80px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Arial", Hiragino Sans, "ヒラギノ角ゴシック", ".HiraKakuInterface-W2", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+  font-weight: 200;
+  letter-spacing: 1.3px;
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
 .visible {
   visibility: visible!important;
 }
 
 //ヘッダーナビゲーション
 .nav_box {
+  z-index: 100;
   position: fixed;
+  top: 0;
   right: 0;
   left: 0;
 }
@@ -26,6 +43,13 @@ li {
   position: absolute;
   right: 0px;
   padding-right: 30px;
+}
+
+.navbar-brand {
+  padding: 0px!important;
+  img {
+    height: 50px;
+  }
 }
 
 ul.sub_nav {
@@ -107,4 +131,37 @@ ul.sub_nav {
 #player {
   float: left;
   // display: none;
+}
+
+//近日公演
+.soon_concert{
+}
+hr {
+  border-top: 2px solid #eee!important;
+}
+.concert_list {
+  .col-md-3 {
+    padding: 0 15;
+  }
+  .concert_box {
+    padding-left: 0!important;
+    padding-right: 0!important;
+    min-height: 300px;
+    margin-bottom: 3rem;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12),0px 2px 2px 0px rgba(0,0,0,0.24);
+    .concert_img {
+      height: 150px;
+      background-color: rgb(190, 190, 190);
+    }
+    .concert_content {
+      padding: 6px 10px 10px 10px;
+      hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .cond_name {
+        margin-top: 5px;
+      }
+    }
+  }
 }
