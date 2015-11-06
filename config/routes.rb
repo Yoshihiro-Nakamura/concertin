@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :song_groups, only: [:index]
+    resources :concerts, only: [:index, :show]
   end
+
 
 end
