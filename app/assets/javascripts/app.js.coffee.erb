@@ -2,12 +2,17 @@
 
 # AngularJSの設定ファイル
 # 依存ライブラリを記述する
-app = angular.module('concertIn', [])
+app = angular.module('concertIn', ['ngResource', 'ngRoute'])
 
 # CSRFのトークンを設定するようにする
 app.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+
+
+app.config(['$routeProvider', ($routeProvider) ->
+  $routeProvider.when '/', templateUrl: "<%= asset_path 'home/top.html' %>", controller: 'TopController'
+])
 
 # AngularJSがturbolinksと一緒に動くようにする
 $(document).on 'page:load', ->
