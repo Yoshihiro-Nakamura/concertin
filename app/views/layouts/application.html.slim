@@ -1,5 +1,5 @@
 doctype html 
-html lang="ja" ng-app="concertIn"
+html lang="ja"
   head
     meta charset="utf-8"
     title Concert.in
@@ -7,12 +7,13 @@ html lang="ja" ng-app="concertIn"
     = stylesheet_link_tag "application", media: "all", 'data-turbolinks-track' => true
     = javascript_include_tag "application", 'data-turbolinks-track' => true
       
-  body
+  body ng-app="concertIn"
     // ここにナビゲーション
     = render "layouts/navigation"
     
-    div(class="container" ng-view)
-      = yield
+    div(class="container")
+      .ng-view
+
     // ここにフッター
     = render "layouts/footer"
 
