@@ -7,4 +7,5 @@ class Concert < ActiveRecord::Base
   has_many :songs, through: :concert_songs
   belongs_to :orchestra
   belongs_to :conductor
+  belongs_to :hall
 end
