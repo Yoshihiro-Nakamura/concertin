@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'layouts#index'
 
   resources :songs do
     collection do
@@ -7,11 +7,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :concerts do
-    collection do
-      get 'search'
-    end
-  end
+  get 'concerts/search' => 'concerts#search'
+
+  get 'concerts/:id' => 'layouts#index'
 
   namespace :api, defaults: {format: :json} do
     resources :song_groups, only: [:index]
