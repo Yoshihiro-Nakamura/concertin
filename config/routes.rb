@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'layouts#index'
+
+
+  # root 'layouts#index'
 
   resources :songs do
     collection do
@@ -16,5 +18,6 @@ Rails.application.routes.draw do
     resources :concerts, only: [:index, :show]
   end
 
-
+  root to: 'layouts#index'
+  get "*path" => "layouts#home"
 end
