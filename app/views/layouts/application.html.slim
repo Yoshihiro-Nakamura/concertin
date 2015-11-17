@@ -2,6 +2,7 @@ doctype html
 html lang="ja"
   head
     meta charset="utf-8"
+    base href="/"
     title Concert.in
     // Assets
     = stylesheet_link_tag "application", media: "all", 'data-turbolinks-track' => true
@@ -20,6 +21,18 @@ html lang="ja"
     javascript:
       var player;
       var video_list;
+      
+      function getConcert() {
+      $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', 'rgb(125, 244, 130)');
+      $.ajax('songs/search', {
+        type: 'GET',
+        data: {videoId: video_list[playCount]}
+      });
+      $.ajax('concerts/search', {
+        type: 'GET',
+        data: {videoId: video_list[playCount]}
+      });
+      }
 
       $.ajax('/api/song_groups', {
         type: 'GET',
@@ -129,3 +142,32 @@ html lang="ja"
               }, 1200);
           }
       }
+      
+      $('.glyphicon-pause').on("click", function(){
+        player.pauseVideo();
+        $(this).toggle(false);
+        $(this).next().toggle(true);
+      });
+      $('.glyphicon-play').on("click", function(){
+        $(this).toggle(false);
+        $(this).prev().toggle(true);
+        player.playVideo();
+      });
+      $('.glyphicon-step-forward').on("click", function(){
+        playCount++;
+        if (playCount > (video_list.length - 1)) {
+          playCount = 0;
+        }
+        player.loadVideoById(video_list[playCount]);
+        player.playVideo();
+        getConcert();
+      });
+      $('.glyphicon-step-backward').on("click", function(){
+        playCount--;
+        if (playCount < 0 ) {
+          playCount = video_list.length - 1
+        }
+        player.loadVideoById(video_list[playCount]);
+        player.playVideo();
+        getConcert();
+      })
