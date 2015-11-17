@@ -1,0 +1,34 @@
+.main.ng-cloak(ng-init="init()")
+  .concert_infobox
+    h2
+      .orchestra
+        |{{ concert.orchestra }}
+    .title
+      |{{ concert.title }}
+    .when.name
+      |{{ concert.start_month}}月{{ concert.start_day}}日 {{ concert.start_time}}　@{{ concert.hall}}
+    hr
+    .players.clearfix
+      .conductor
+        .name
+          |{{ concert.conductor }}
+        .role
+          | 指揮
+      .artist ng-repeat="artist in concert.artists"
+        .name
+          |{{ artist.name }}
+        .role
+          |{{artist.instrument}}
+    hr
+    .program ng-repeat="song in concert.songs"
+      .composer.name
+        |{{ song.composer }}
+      .song_title
+        |{{ song.title }}
+    hr
+    .ticket.name
+      |チケット情報・問い合わせ
+    .ticket_price
+      |料金{{ concert.price}}
+    .contact ng-repeat="contact in concert.contacts"
+      |{{contact.name}} {{contact.phone_number}}

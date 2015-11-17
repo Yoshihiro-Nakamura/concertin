@@ -1,5 +1,3 @@
-# app/assets/javascripts/app.coffee
-
 # AngularJSの設定ファイル
 # 依存ライブラリを記述する
 app = angular.module('concertIn', ['ngResource', 'ngRoute'])
@@ -9,9 +7,28 @@ app.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 
+# app.run ($rootScope, $route, $location) ->
+#   #Bind the `$locationChangeSuccess` event on the rootScope, so that we dont need to
+#   #bind in induvidual controllers.
+#   $rootScope.$on '$locationChangeSuccess', ->
+#     $rootScope.actualLocation = $location.path()
+#     return
+#   $rootScope.$watch (->
+#     $location.path()
+#   ), (newLocation, oldLocation) ->
+#     if $rootScope.actualLocation == newLocation
+#       alert 'Why did you use history back?'
+#     return
+#   return
 
-app.config(['$routeProvider', ($routeProvider) ->
+
+
+app.config(['$routeProvider','$locationProvider', ($routeProvider, $locationProvider) ->
+  $locationProvider.html5Mode true
+
   $routeProvider.when '/', templateUrl: "<%= asset_path 'home/top.html' %>", controller: 'TopController'
+  $routeProvider.when '/concerts/:concert_id', templateUrl: "<%= asset_path 'concerts/show.html' %>", controller: 'ConcertController'
+  $routeProvider.otherwise redirectTo: '/'
 ])
 
 # AngularJSがturbolinksと一緒に動くようにする

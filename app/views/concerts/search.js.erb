@@ -1,6 +1,7 @@
 $('ul.other_concert_lists').empty();
+$('.current_song_concerts a').attr("href", "/#/concerts/<%=@concerts[0].id%>")
 $('.month').text("<%=@concerts[0].start_datetime.strftime("%1m")%>");
-$('.divide_line').text("/");
+$('.divide_line').text("／");
 $('.day').text("<%=@concerts[0].start_datetime.strftime("%e")%>");
 $('p.orchestra_name').text("<%=@concerts[0].orchestra.name%>");
 <% if @concerts[0].conductor %>
@@ -12,7 +13,7 @@ $('p.orchestra_name').text("<%=@concerts[0].orchestra.name%>");
   $('.other_concerts').addClass('visible');
   $('.count_concert').text("他<%= @concerts.length - 1%>公演");
   <% @concerts.drop(1).each do |concert|%>
-    $('ul.other_concert_lists').append("<li><a href='#'><%= concert.start_datetime.strftime("%1m")%>/<%=concert.start_datetime.strftime("%e")%>　<%= concert.orchestra.name%>:<%= concert.conductor.name%></a></li>");
+    $('ul.other_concert_lists').append("<li><a href='/#/concerts/<%= concert.id%>'><%= concert.start_datetime.strftime("%1m")%>/<%=concert.start_datetime.strftime("%e")%>　<%= concert.orchestra.name%>:<%= concert.conductor.name%></a></li>");
   <%end%>
 <%else%>
   $('.other_concerts').removeClass('visible');

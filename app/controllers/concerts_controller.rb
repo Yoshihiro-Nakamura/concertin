@@ -1,5 +1,7 @@
 class ConcertsController < ApplicationController
   def search
-    @concerts = Song.find_by(video_id: params[:videoId]).concerts.shuffle
+    from = DateTime.now
+    to = from + 1.month
+    @concerts = Song.find_by(video_id: params[:videoId]).concerts.where(start_datetime: from .. to).shuffle
   end
 end

@@ -8,19 +8,25 @@
         p.cd_song_artist
           |
     #player
+    .player_buttons
+      span.glyphicon.glyphicon-step-backward aria-hidden="true"
+      span.glyphicon.glyphicon-pause aria-hidden="true"
+      span.glyphicon.glyphicon-play aria-hidden="true"
+      span.glyphicon.glyphicon-step-forward aria-hidden="true"
     .current_song_concerts
-      .concerts_date
-        .month
-          |
-        .divide_line
-          |
-        .day
-          |
-      .concerts_artists
-        p.orchestra_name
-          |
-        p.conductor_name
-          |
+      a
+        .concerts_date
+          .month
+            |
+          .divide_line
+            |
+          .day
+            |
+        .concerts_artists
+          p.orchestra_name
+            |
+          p.conductor_name
+            |
       .dropup.other_concerts
         button.btn.btn-default.dropdown-toggle.count_concert type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
           |
