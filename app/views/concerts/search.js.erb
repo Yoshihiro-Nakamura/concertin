@@ -1,7 +1,7 @@
 $('ul.other_concert_lists').empty();
 $('.current_song_concerts a').attr("href", "/#/concerts/<%=@concerts[0].id%>")
 $('.month').text("<%=@concerts[0].start_datetime.strftime("%1m")%>");
-$('.divide_line').text("／");
+$('.divide_line').text("/");
 $('.day').text("<%=@concerts[0].start_datetime.strftime("%e")%>");
 $('p.orchestra_name').text("<%=@concerts[0].orchestra.name%>");
 <% if @concerts[0].conductor %>
