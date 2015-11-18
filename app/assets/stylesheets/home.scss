@@ -34,30 +34,30 @@ body {
 //ヘッダーナビゲーション
 .nav_box {
   z-index: 100;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
   .nav_wrapper {
     position: relative;
-    height: 110px;
+    height: 128px;
     .navbar-brand {
       padding: 0px!important;
       img {
-        height: 90px;
-        margin-top: 10px;
+        height: 86px;
+        margin-top: 22px;
       }
     }
     ul.nav li a{
-      padding-top: 20px;
-      padding-bottom: 20px;
+      padding: 20px 0 0 0;
       font-size: initial;
+      margin-left: 28px;
     }
     .sub_navbar{
       position: absolute;
       right: 0px;
-      padding-right: 30px;
-      top: 111px;
+      padding-right: 15px;
+      top: 129px;
     }
   }
 }
@@ -256,7 +256,7 @@ ul.sub_nav {
 
 //コンサート
 .ng-view{
-  margin-top: 80px;
+  margin-top: 98px;
 }
 .concert_infobox {
 
