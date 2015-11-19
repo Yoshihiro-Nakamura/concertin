@@ -41,11 +41,11 @@ body {
   left: 0;
   .nav_wrapper {
     position: relative;
-    height: 128px;
+    height: 118px;
     .navbar-brand {
       padding: 0px!important;
       img {
-        height: 86px;
+        height: 78px;
         margin-top: 22px;
       }
     }
@@ -58,7 +58,7 @@ body {
       position: absolute;
       right: 0px;
       padding-right: 15px;
-      top: 129px;
+      top: 120px;
     }
   }
 }
@@ -265,7 +265,7 @@ ul.sub_nav {
 
 //コンサート
 .ng-view{
-  margin-top: 98px;
+  margin-top: 90px;
 }
 .concert_infobox {
 
