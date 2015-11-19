@@ -1,3 +1,4 @@
+
 # AngularJSの設定ファイル
 # 依存ライブラリを記述する
 app = angular.module('concertIn', ['ngResource', 'ngRoute'])
@@ -7,32 +8,16 @@ app.config ($httpProvider) ->
   authToken = $("meta[name=\"csrf-token\"]").attr("content")
   $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 
-# app.run ($rootScope, $route, $location) ->
-#   #Bind the `$locationChangeSuccess` event on the rootScope, so that we dont need to
-#   #bind in induvidual controllers.
-#   $rootScope.$on '$locationChangeSuccess', ->
-#     $rootScope.actualLocation = $location.path()
-#     return
-#   $rootScope.$watch (->
-#     $location.path()
-#   ), (newLocation, oldLocation) ->
-#     if $rootScope.actualLocation == newLocation
-#       alert 'Why did you use history back?'
-#     return
-#   return
-
-
-
 app.config(['$routeProvider','$locationProvider', ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode true
-
-  $routeProvider.when '/', templateUrl: "<%= asset_path 'home/top.html' %>", controller: 'TopController'
-  $routeProvider.when '/concerts/:concert_id', templateUrl: "<%= asset_path 'concerts/show.html' %>", controller: 'ConcertController'
-  $routeProvider.otherwise redirectTo: '/'
+  $routeProvider.when '/', redirectTo: '/home'
+  $routeProvider.when '/home', templateUrl: "<%= asset_path 'home/top.html' %>", controller: 'TopController', reloadOnSearch: false
+  $routeProvider.when '/concerts/:concert_id', templateUrl: "<%= asset_path 'concerts/show.html' %>", controller: 'ConcertController', reloadOnSearch: false
+  $routeProvider.otherwise redirectTo: '/home'
 ])
 
 # AngularJSがturbolinksと一緒に動くようにする
-$(document).on 'page:load', ->
-  $('[ng-app]').each ->
-    module = $(this).attr('ng-app')
-    angular.bootstrap(this, [module])
+#$(document).on 'page:load', ->
+#  $('[ng-app]').each ->
+#    module = $(this).attr('ng-app')
+#    angular.bootstrap(this, [module])
