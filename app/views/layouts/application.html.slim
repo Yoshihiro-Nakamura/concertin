@@ -1,173 +1,173 @@
 doctype html 
 html lang="ja"
-  head
-    meta charset="utf-8"
-    base href="/"
-    title Concert.in
-    // Assets
-    = stylesheet_link_tag "application", media: "all", 'data-turbolinks-track' => true
-    = javascript_include_tag "application", 'data-turbolinks-track' => true
-      
-  body ng-app="concertIn"
-    // ここにナビゲーション
-    = render "layouts/navigation"
+head
+  meta charset="utf-8"
+  base href="/"
+  title Concert.in
+  // Assets
+  = stylesheet_link_tag "application", media: "all", 'data-turbolinks-track' => true
+  = javascript_include_tag "application", 'data-turbolinks-track' => true
     
-    div(class="container")
-      .ng-view
+body ng-app="concertIn"
+  // ここにナビゲーション
+  = render "layouts/navigation"
+  
+  div(class="container")
+    .ng-view
 
-    // ここにフッター
-    = render "layouts/footer"
+  // ここにフッター
+  = render "layouts/footer"
 
-    javascript:
-      var player;
-      var video_list;
-      
-      function getConcert() {
-      $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', 'rgb(125, 244, 130)');
-      $.ajax('songs/search', {
-        type: 'GET',
-        data: {videoId: video_list[playCount]}
-      });
-      $.ajax('concerts/search', {
-        type: 'GET',
-        data: {videoId: video_list[playCount]}
-      });
-      }
+  javascript:
+    var player;
+    var video_list;
+    
+    function getConcert() {
+    $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', 'rgb(125, 244, 130)');
+    $.ajax('songs/search', {
+      type: 'GET',
+      data: {videoId: video_list[playCount]}
+    });
+    $.ajax('concerts/search', {
+      type: 'GET',
+      data: {videoId: video_list[playCount]}
+    });
+    }
 
-      $.ajax('/api/song_groups', {
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json'
-      }).done(function(data) {
-        video_list = data;
-        loadPlayer();
-      }).fail(function(jqXHR) {
-        alert(jqXHR.status + " error");
-      });
-      
-      function loadPlayer() {
-      console.log(video_list);
-          if (document.querySelector('#player')) {
-              // get API
-              var tag = document.createElement('script'),
-              firstScriptTag = document.getElementsByTagName('script')[0];
-              tag.src = 'https://www.youtube.com/iframe_api';
-              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-                  playCount = 0;
-              function playChannel() {
-                  // init player
-                  player = new YT.Player(
-                      'player',
-                      {
-                          width: '160',
-                          height: '100',
-                          videoId: video_list[0],
-                          playerVars: {
-                              rel: 1,
-                              autoplay: 1,
-                              disablekb: 0,
-                              showsearch: 0,
-                              showinfo: 0,
-                              controls: 1,
-                              autohide: 0,
-                              modestbranding: 0,
-                              wmode: 'opaque',
-                              hd: 1,
-                              html5: 1,
-                              iv_load_policy: 3
-                          },
-                          events: {
-                              'onReady'        : onPlayerReady,
-                              'onStateChange'  : onPlayerStateChange,
-                              'onError'        : error
-                          }
-                      }
-                  );
+    $.ajax('/api/song_groups', {
+      type: 'GET',
+      dataType: 'json',
+      contentType: 'application/json'
+    }).done(function(data) {
+      video_list = data;
+      loadPlayer();
+    }).fail(function(jqXHR) {
+      alert(jqXHR.status + " error");
+    });
+    
+    function loadPlayer() {
+    console.log(video_list);
+        if (document.querySelector('#player')) {
+            // get API
+            var tag = document.createElement('script'),
+            firstScriptTag = document.getElementsByTagName('script')[0];
+            tag.src = 'https://www.youtube.com/iframe_api';
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                playCount = 0;
+            function playChannel() {
+                // init player
+                player = new YT.Player(
+                    'player',
+                    {
+                        width: '160',
+                        height: '100',
+                        videoId: video_list[0],
+                        playerVars: {
+                            rel: 1,
+                            autoplay: 1,
+                            disablekb: 0,
+                            showsearch: 0,
+                            showinfo: 0,
+                            controls: 1,
+                            autohide: 0,
+                            modestbranding: 0,
+                            wmode: 'opaque',
+                            hd: 1,
+                            html5: 1,
+                            iv_load_policy: 3
+                        },
+                        events: {
+                            'onReady'        : onPlayerReady,
+                            'onStateChange'  : onPlayerStateChange,
+                            'onError'        : error
+                        }
+                    }
+                );
 
-                  // play video
-                  function onPlayerReady(e) {
-                      $('.concert-box ul li:eq(0)').css('backgroundColor', 'rgb(125, 244, 130)')
-                      //ajax
-                      $.ajax({
-                        url: 'songs/search',
-                        type: 'GET',
-                        data: {videoId: video_list[playCount]}
-                      });
-                      $.ajax('concerts/search', {
-                        type: 'GET',
-                        data: {videoId: video_list[playCount]}
-                      });
+                // play video
+                function onPlayerReady(e) {
+                    $('.concert-box ul li:eq(0)').css('backgroundColor', 'rgb(125, 244, 130)')
+                    //ajax
+                    $.ajax({
+                      url: 'songs/search',
+                      type: 'GET',
+                      data: {videoId: video_list[playCount]}
+                    });
+                    $.ajax('concerts/search', {
+                      type: 'GET',
+                      data: {videoId: video_list[playCount]}
+                    });
 
-                  }
+                }
 
-                  function error(e) {
-                      console.log('Error');
-                      console.log(e);
-                  }
-              }
+                function error(e) {
+                    console.log('Error');
+                    console.log(e);
+                }
+            }
 
 
-              function onPlayerStateChange(e) {
-                  // get state
-                  console.log(e);
+            function onPlayerStateChange(e) {
+                // get state
+                console.log(e);
 
-                  // play list loop when video end play next video
-                  if (e.data === 0) {
-                      $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', '');
-                      playCount++;
-                      if (playCount > (video_list.length -1)) {
-                          playCount = 0;
-                      }
-                      player.loadVideoById(video_list[playCount]);
-                      player.playVideo();
-                      $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', 'rgb(125, 244, 130)');
-                      $.ajax('songs/search', {
-                        type: 'GET',
-                        data: {videoId: video_list[playCount]}
-                      });
-                      $.ajax('concerts/search', {
-                        type: 'GET',
-                        data: {videoId: video_list[playCount]}
-                      });
-                  }
+                // play list loop when video end play next video
+                if (e.data === 0) {
+                    $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', '');
+                    playCount++;
+                    if (playCount > (video_list.length -1)) {
+                        playCount = 0;
+                    }
+                    player.loadVideoById(video_list[playCount]);
+                    player.playVideo();
+                    $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', 'rgb(125, 244, 130)');
+                    $.ajax('songs/search', {
+                      type: 'GET',
+                      data: {videoId: video_list[playCount]}
+                    });
+                    $.ajax('concerts/search', {
+                      type: 'GET',
+                      data: {videoId: video_list[playCount]}
+                    });
+                }
 
-              }
+            }
 
-              function onYouTubeIframeAPIReady() {
-                  playChannel();
-              }
+            function onYouTubeIframeAPIReady() {
+                playChannel();
+            }
 
-              setTimeout(function() {
-                  onYouTubeIframeAPIReady();
-              }, 1200);
-          }
-      }
-      
-      $('.glyphicon-pause').on("click", function(){
-        player.pauseVideo();
-        $(this).toggle(false);
-        $(this).next().toggle(true);
-      });
-      $('.glyphicon-play').on("click", function(){
-        $(this).toggle(false);
-        $(this).prev().toggle(true);
-        player.playVideo();
-      });
-      $('.glyphicon-step-forward').on("click", function(){
-        playCount++;
-        if (playCount > (video_list.length - 1)) {
-          playCount = 0;
+            setTimeout(function() {
+                onYouTubeIframeAPIReady();
+            }, 1200);
         }
-        player.loadVideoById(video_list[playCount]);
-        player.playVideo();
-        getConcert();
-      });
-      $('.glyphicon-step-backward').on("click", function(){
-        playCount--;
-        if (playCount < 0 ) {
-          playCount = video_list.length - 1
-        }
-        player.loadVideoById(video_list[playCount]);
-        player.playVideo();
-        getConcert();
-      })
+    }
+    
+    $('.glyphicon-pause').on("click", function(){
+      player.pauseVideo();
+      $(this).toggle(false);
+      $(this).next().toggle(true);
+    });
+    $('.glyphicon-play').on("click", function(){
+      $(this).toggle(false);
+      $(this).prev().toggle(true);
+      player.playVideo();
+    });
+    $('.glyphicon-step-forward').on("click", function(){
+      playCount++;
+      if (playCount > (video_list.length - 1)) {
+        playCount = 0;
+      }
+      player.loadVideoById(video_list[playCount]);
+      player.playVideo();
+      getConcert();
+    });
+    $('.glyphicon-step-backward').on("click", function(){
+      playCount--;
+      if (playCount < 0 ) {
+        playCount = video_list.length - 1
+      }
+      player.loadVideoById(video_list[playCount]);
+      player.playVideo();
+      getConcert();
+    })
