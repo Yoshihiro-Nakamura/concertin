@@ -19,7 +19,7 @@ body {
 }
 
 .current_tab {
-  background-color: rgb(114, 219, 242)!important;
+  background-color: #6ec7ea !important;
 }
 
 
@@ -34,27 +34,30 @@ body {
 //ヘッダーナビゲーション
 .nav_box {
   z-index: 100;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
   .nav_wrapper {
     position: relative;
+    height: 128px;
     .navbar-brand {
       padding: 0px!important;
       img {
-        height: 64px;
+        height: 86px;
+        margin-top: 22px;
       }
     }
     ul.nav li a{
-      padding-top: 20px;
-      padding-bottom: 20px;
+      padding: 20px 0 0 0;
       font-size: initial;
+      margin-left: 28px;
     }
     .sub_navbar{
       position: absolute;
       right: 0px;
-      padding-right: 30px;
+      padding-right: 15px;
+      top: 129px;
     }
   }
 }
@@ -69,11 +72,12 @@ li {
 ul.sub_nav {
   li {
     float: right;
-    background-color: rgb(64, 69, 71);
+    background-color: #333333;
     color: #fff;
-    font-size: 80%;
-    line-height: 1.8em;
-    padding: 0 5px;
+    padding: 8px 19px;
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 3px;
     a {
       color: #fff;
     }
@@ -96,29 +100,29 @@ ul.sub_nav {
   .panel-body{
     padding: 0 0 0 14px;
     position: relative;
+    height: 75px;
 
     .cd_infobox {
       img.naxos_image{
-        width: 60px;
-        height: 60px;
+        width: 75px;
+        height: 75px;
         float: left;
       }
       .cd_description{
         float: left;
         padding: 8px 0 7px 6px;
         p.cd_song_title {
-          // font-size: medium;
-          margin: 0px;
+          margin: 8px 0 0 10px;
+          font-size: 14px;
         }
         p.cd_song_artist{
-          margin-top: 5px;
-          margin-bottom: 0px;
+          margin: 5px 0 0 10px;
         }
       }
     }
     .player_buttons{
       position: absolute;
-      top: 20px;
+      top: 25px;
       left: calc(50% - 41px);
       span.glyphicon-step-backward {
         font-size: x-large;
@@ -127,9 +131,11 @@ ul.sub_nav {
       span.glyphicon-play {
         font-size: x-large;
         display: none;
+        margin: 0 10px 0;
       }
       span.glyphicon-pause {
         font-size: x-large;
+        margin: 0 10px 0;
       }
       span.glyphicon-step-forward{
         font-size: x-large;
@@ -143,34 +149,42 @@ ul.sub_nav {
       border-left: solid 7px rgb(114, 219, 242);
       color: rgb(114, 219, 242);
       height: 100%;
-      width: 440px;
+      width: 475px;
       background-color: #fff;
       padding: 8px 6px;
 
       .concerts_date {
         float: left;
+        margin: 5px 0 0px 10px;
         .month{
-          font-size: 110%;
-
+          font-size: 100%;
+          color: #64c9e9;
         }
         .divide_line {
-          margin: -20px 0 0 3px;
-          font-size: 200%;
+          margin: -37px 7px -1px 8px;
+          font-size: 62px;
+          font-weight: inherit;
+          color: #64c9e9;
         }
         .day {
-          font-size: 200%;
-          margin-top: -30px;
-          margin-left: 18px;
+          font-size: 235%;
+          margin-top: -57px;
+          margin-left: 26px;
+          color: #64c9e9;
         }
       }
       .concerts_artists{
         float: left;
-        margin-left: 7px;
+        margin-left: 16px;
         p.orchestra_name {
+          color: #64c9e9;
           margin: 0px;
+          font-size: 16px;
+          margin: 6px 0 0 0;
         }
         p.conductor_name {
           margin: 5px 0 0 0;
+          color: #64c9e9;
         }
       }
       .other_concerts {
@@ -189,22 +203,32 @@ ul.sub_nav {
 //近日公演
 .soon_concert{
   h1 {
-    font-size: 25px;
+    font-size: 24px;
+    font-weight: 100;
+    letter-spacing: 2px;
   }
   img {
-    height: 40px;
+    height: 46px;
     margin-bottom: 8px;
     margin-right: 7px;
   }
-  hr {
-    border-top: 2px solid #eee!important;
-    margin-top: 10px!important;
-    margin-bottom: 15px!important;
+}
+.main{
+  > hr {
+    border-top: 2px solid #82c6e7;
+    margin-top: 6px ;
+    margin-bottom: 18px;
   }
 }
+
 .concert_list {
   .col-md-3 {
     padding: 0 15;
+  }
+  .concert_box:hover{
+    border: 4px solid #82c6e7;
+    transition: border .10s, width 0s .3s, height 0s .3s;
+    -webkit-transition: border .3s, width 0s .3s, height 0s .3s
   }
   .concert_box {
     padding-left: 0!important;
@@ -212,13 +236,17 @@ ul.sub_nav {
     min-height: 300px;
     margin-bottom: 3rem;
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12),0px 2px 2px 0px rgba(0,0,0,0.24);
+    background-color: #f8f8f8;
     .concert_img {
       height: 150px;
       background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b5/Dohnanyi_Orchestra_Budafok.JPG);
       background-size: contain;
     }
     .concert_content {
-      padding: 6px 10px 10px 10px;
+      padding: 19px 15px 10px;
+      color: #333333;
+      font-weight: 700;
+      font-size: 0.8em;
       a {
         display: block;
         width: 100%;
@@ -226,7 +254,7 @@ ul.sub_nav {
       }
       hr {
         margin-top: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
       }
       .cond_name {
         margin-top: 5px;
@@ -236,6 +264,9 @@ ul.sub_nav {
 }
 
 //コンサート
+.ng-view{
+  margin-top: 98px;
+}
 .concert_infobox {
 
   box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12),0px 2px 2px 0px rgba(0,0,0,0.24);
