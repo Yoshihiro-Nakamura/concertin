@@ -73,7 +73,7 @@ li {
 ul.sub_nav {
   li {
     float: right;
-    background-color: #333333;
+    background-color: #8c8c8c;
     color: #fff;
     padding: 8px 19px;
     font-size: 12px;
@@ -204,12 +204,12 @@ ul.sub_nav {
 //近日公演
 .soon_concert{
   h1 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 100;
     letter-spacing: 2px;
   }
   img {
-    height: 46px;
+    height: 38px;
     margin-bottom: 8px;
     margin-right: 7px;
   }
@@ -226,13 +226,10 @@ ul.sub_nav {
   .col-md-3 {
     padding: 0 15;
   }
-  .concert_box:hover{
-    border: 2px solid #82c6e7;
-  }
   .concert_box {
     padding-left: 0!important;
     padding-right: 0!important;
-    min-height: 285px;
+    height: 300px;
     margin-bottom: 3rem;
     box-shadow: 0 1px 1px #dddddd;
     /*box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12),0px 2px 2px 0px rgba(0,0,0,0.24);*/
@@ -247,6 +244,16 @@ ul.sub_nav {
       color: #333333;
       font-weight: 700;
       font-size: 0.8em;
+      p{
+      font-size: 12px;
+      font-weight: 700;
+      }
+      .orchestra_name{
+        font-weight: 400;
+      }
+      .cond_name{
+        font-weight: 400;
+      }
       a {
         display: block;
         width: 100%;
