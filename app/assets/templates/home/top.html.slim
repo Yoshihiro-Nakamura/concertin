@@ -8,9 +8,12 @@
     .col-md-3 ng-repeat="concert in concerts"
       .concert_box
         a.concert_title href="/concerts/{{concert.id}}"
-          .concert_img
+          .concert_img style=("background-image: url({{concert.img_url}});")
+            .concert_date
+              |{{concert.month}}/{{concert.day}}
           .concert_content
-            p|{{concert.title}}
+            p
+              |{{concert.title}}
             hr
             .orchestra_name
               |{{concert.orchestra}}
