@@ -6,5 +6,6 @@ json.concerts do
     json.day(concert.start_datetime.strftime("%e"))
     json.orchestra(concert.orchestra.name)
     json.conductor(concert.conductor.name)
+    json.img_url(concert.conductor.image_url)
   end
 end
