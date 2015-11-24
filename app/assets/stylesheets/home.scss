@@ -34,31 +34,35 @@ body {
 
 //ヘッダーナビゲーション
 .nav_box {
+  border-bottom: 1px solid #ddd;
   z-index: 100;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
   .nav_wrapper {
     position: relative;
-    height: 118px;
+    height: 68px;
     .navbar-brand {
       padding: 0px!important;
       img {
-        height: 78px;
-        margin: 20px 14px;
+        height: 48px;
+        margin: 10px 14px;
       }
     }
-    ul.nav li a{
-      padding: 20px 0 0 0;
-      font-size: initial;
-      margin-left: 28px;
+    ul.nav{
+      margin-top: 10px;
+      li a{
+        padding: 20px 0 0 0;
+        font-size: initial;
+        margin-left: 28px;
+      }
     }
     .sub_navbar{
       position: absolute;
       right: 0px;
       padding-right: 15px;
-      top: 120px;
+      top: 69px;
     }
   }
 }
@@ -75,7 +79,7 @@ ul.sub_nav {
     float: right;
     background-color: #8c8c8c;
     color: #fff;
-    padding: 8px 19px;
+    padding: 6px 15px;
     font-size: 12px;
     font-weight: 100;
     letter-spacing: 3px;
@@ -91,6 +95,7 @@ ul.sub_nav {
 
 // フッター
 .panel_box {
+  // display: none;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -101,30 +106,31 @@ ul.sub_nav {
   .panel-body{
     padding: 0 0 0 14px;
     position: relative;
-    height: 75px;
+    height: 60px;
 
     .cd_infobox {
       img.naxos_image{
-        width: 75px;
-        height: 75px;
+        width: 60px;
+        height: 60px;
         float: left;
       }
       .cd_description{
         float: left;
-        padding: 8px 0 7px 6px;
+        padding: 11px 0 7px 6px;
         p.cd_song_title {
-          margin: 8px 0 0 10px;
-          font-size: 14px;
+          margin: 0 0 0 10px;
+          font-size: 12px;
         }
         p.cd_song_artist{
           margin: 5px 0 0 10px;
+          font-size: 12px;
         }
       }
     }
     .player_buttons{
       position: absolute;
-      top: 25px;
-      left: calc(50% - 41px);
+      top: 20px;
+      left: calc(50% - 50px);
       span.glyphicon-step-backward {
         font-size: x-large;
         margin-right: 3px;
@@ -163,14 +169,14 @@ ul.sub_nav {
         }
         .divide_line {
           margin: -37px 7px -1px 8px;
-          font-size: 62px;
+          font-size: 50px;
           font-weight: inherit;
           color: #64c9e9;
         }
         .day {
-          font-size: 235%;
-          margin-top: -57px;
-          margin-left: 26px;
+          font-size: 200%;
+          margin-top: -50px;
+          margin-left: 20px;
           color: #64c9e9;
         }
       }
@@ -180,12 +186,13 @@ ul.sub_nav {
         p.orchestra_name {
           color: #64c9e9;
           margin: 0px;
-          font-size: 16px;
-          margin: 6px 0 0 0;
+          font-size: 12px;
+          margin: 3px 0 0 0;
         }
         p.conductor_name {
           margin: 5px 0 0 0;
           color: #64c9e9;
+          font-size: 12px;
         }
       }
       .other_concerts {
@@ -231,13 +238,24 @@ ul.sub_nav {
     padding-right: 0!important;
     height: 300px;
     margin-bottom: 3rem;
-    box-shadow: 0 1px 1px #dddddd;
-    /*box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12),0px 2px 2px 0px rgba(0,0,0,0.24);*/
+    // box-shadow: 0 1px 1px #dddddd;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12),0px 2px 2px 0px rgba(0,0,0,0.24);
     background-color: #ffffff;
     .concert_img {
       height: 150px;
-      background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b5/Dohnanyi_Orchestra_Budafok.JPG);
-      background-size: contain;
+      // background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b5/Dohnanyi_Orchestra_Budafok.JPG);
+      background-size: cover;
+      position: relative;
+      .concert_date {
+        background-color: #000000;
+        opacity: 0.6;
+        color: #fff;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: auto;
+        padding: 5px;
+      }
     }
     .concert_content {
       padding: 19px 15px 10px;
@@ -272,7 +290,7 @@ ul.sub_nav {
 
 //コンサート
 .ng-view{
-  margin-top: 90px;
+  margin-top: 70px;
 }
 .concert_infobox {
 
