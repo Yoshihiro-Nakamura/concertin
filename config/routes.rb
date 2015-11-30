@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   get '/concerts/search' => 'concerts#search'
   get '/home' => 'layouts#index'
   get '/concerts/:id' => 'layouts#index'
+  get '/orchestras' => 'layouts#index'
+  get '/orchestras/:id' => 'layouts#index'
   get '/templates/:path.html' => 'templates#template', constraints: { path: /.+/ }
 
   namespace :api, defaults: {format: :json} do
     resources :song_groups, only: [:index]
     resources :concerts, only: [:index, :show]
+    resources :orchestras, only: [:show]
   end
 
   root to: 'layouts#index'
