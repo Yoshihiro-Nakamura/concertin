@@ -47,3 +47,7 @@ end
 
 gem 'jquery-turbolinks'
 gem 'slim-rails'
+
+group :production, :staging do
+  gem 'unicorn'
+end
