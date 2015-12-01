@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: concertin_production
-  username: concertin
+  username: root
   password: <%= ENV['CONCERTIN_DATABASE_PASSWORD'] %>
