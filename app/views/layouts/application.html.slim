@@ -33,7 +33,7 @@ body ng-app="concertIn"
       data: {videoId: video_list[playCount]}
     });
     }
-
+  
     $.ajax('/api/song_groups', {
       type: 'GET',
       dataType: 'json',
@@ -83,7 +83,7 @@ body ng-app="concertIn"
                         }
                     }
                 );
-
+  
                 // play video
                 function onPlayerReady(e) {
                     $('.concert-box ul li:eq(0)').css('backgroundColor', 'rgb(125, 244, 130)')
@@ -97,20 +97,20 @@ body ng-app="concertIn"
                       type: 'GET',
                       data: {videoId: video_list[playCount]}
                     });
-
+  
                 }
-
+  
                 function error(e) {
                     console.log('Error');
                     console.log(e);
                 }
             }
-
-
+  
+  
             function onPlayerStateChange(e) {
                 // get state
                 console.log(e);
-
+  
                 // play list loop when video end play next video
                 if (e.data === 0) {
                     $(".concert-box ul li" + ":eq("+playCount+")").css('backgroundColor', '');
@@ -130,13 +130,13 @@ body ng-app="concertIn"
                       data: {videoId: video_list[playCount]}
                     });
                 }
-
+  
             }
-
+  
             function onYouTubeIframeAPIReady() {
                 playChannel();
             }
-
+  
             setTimeout(function() {
                 onYouTubeIframeAPIReady();
             }, 1200);
