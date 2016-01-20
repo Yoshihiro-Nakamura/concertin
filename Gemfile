@@ -51,3 +51,5 @@ gem 'slim-rails'
 group :production, :staging do
   gem 'unicorn'
 end
+
+gem 'nested_form'
