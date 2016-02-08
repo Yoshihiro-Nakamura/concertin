@@ -1,19 +1,28 @@
 .panel.panel-default.panel_box
   .panel-body.container
-    .cd_infobox
-      = image_tag("/images/now-playing.svg", class: 'naxos_image')
-      .cd_description
-        p.cd_song_title
-          |
-        p.cd_song_artist
-          |
-    #player
+    / .buttons_wrapper
     .player_buttons
       span.glyphicon.glyphicon-step-backward aria-hidden="true"
       span.glyphicon.glyphicon-pause aria-hidden="true"
       span.glyphicon.glyphicon-play aria-hidden="true"
       span.glyphicon.glyphicon-step-forward aria-hidden="true"
-    .current_song_concerts
+    .cd_infobox
+      .cd_wrapper
+        = image_tag("/images/now-pp.svg", class: 'naxos_image')
+      .cd_description
+        p.cd_nav
+          |now playing
+        p.cd_song_title
+          |
+        / p.cd_song_artist
+        /   |
+    #player
+    / .player_buttons
+    /   span.glyphicon.glyphicon-step-backward aria-hidden="true"
+    /   span.glyphicon.glyphicon-pause aria-hidden="true"
+    /   span.glyphicon.glyphicon-play aria-hidden="true"
+    /   span.glyphicon.glyphicon-step-forward aria-hidden="true"
+    .current_song_concerts.button_anime.clearfix
       a
         .concerts_date
           .month
@@ -29,8 +38,9 @@
             |
           p.conductor_name
             |
-      .dropup.other_concerts
-        button.btn.btn-default.dropdown-toggle.count_concert type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-          |
-          span.caret
-        ul.dropdown-menu.other_concert_lists aria-labelledby="dropdownMenu2"
+        p.read_more
+    .dropup.other_concerts
+      button.btn.btn-default.dropdown-toggle.count_concert type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        |
+        span.caret
+      ul.dropdown-menu.other_concert_lists aria-labelledby="dropdownMenu2"
