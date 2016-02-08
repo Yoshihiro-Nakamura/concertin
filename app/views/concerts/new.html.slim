@@ -1,0 +1,147 @@
+link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" type="text/css"
+/ script src="http://code.jquery.com/jquery-1.10.2.min.js"
+script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"
+
+div( ng-controller="ConcertNewController" )
+  .main.ng-cloak(ng-init="init()")
+    h2
+      |コンサートを追加する
+    .form_box
+      / =form_tag concerts_create_path
+      =nested_form_for @concert do |f|
+        .form-group
+          |オーケストラを選択
+          = select_tag :orchestra, options_from_collection_for_select(@orchestras, :id, :name)
+          br
+          |公演タイトルを入力
+          = text_field :concert, :title, size: "80"
+          br
+          / |公演日を入力
+          / = date_select :concert, :date, use_month_numbers: true
+          br
+          |開演時間を入力
+          = datetime_select :concert, :start_datetime, use_month_numbers: true
+          br
+          |開場時間を入力
+          = time_select :concert, :open_time
+          br
+          |ホール名を入力
+          = text_field :hall, :name
+          br
+          |指揮者名を入力
+          = text_field :conductor, :name
+          br
+          hr
+          / 追加部分gggggggggggggggggg
+          div(ng-repeat="artist in artists")
+            |担当楽器（役割）を選択
+            select name="concert[artist_attributes][{{$index}}][instrument_id]" id="concert_artist_attributes_{{$index}}_instrument_id" ng-model="instrument" ng-options="i.id as i.name for i in instruments"
+              / option value="" selected="selected" 以下から選択してください
+            |アーティスト名を入力
+            input type="text" name="concert[artist_attributes][{{$index}}][artist_name]" id="concert_artist_attributes_{{$index}}_artist_name" class="artist_field"
+            input type='button' ng-if="!$last" ng-click='delArtists($index)' value='削除'
+            input type='button' ng-if="$last" ng-click='addArtists($index)' value='追加' class="add_artist"
+          
+          / select ng-model="selectedMonth" ng-options="month.id as month.name for month in months"
+          / |選択された値 = {{ selectedMonth }}
+          hr
+          div(ng-repeat="song in songs")
+            |作曲家を入力
+            input type="text" name="concert[song_attributes][{{$index}}][composer_name]" id="concert_song_attributes_{{$index}}_composer_name" class="composer_field"
+            |曲名を入力
+            input type="text" name="concert[song_attributes][{{$index}}][title]" id="concert_song_attributes_{{$index}}_title" class="song_field"
+            input type='button' ng-if="!$last" ng-click='delSongs($index)' value='削除'
+            input type='button' ng-if="$last" ng-click='addSongs($index)' value='追加' class="add_composer"
+          hr
+          / 追加部分
+          |料金を入力
+          = text_field :concert, :price
+          br
+          hr
+          div(ng-repeat="contact in contacts")
+            |問い合わせ先を入力
+            input type="text" name="concert[contact_attributes][{{$index}}][name]" class="contact_field" id="concert_contact_attributes_{{$index}}_name"
+            |電話番号を入力
+            input type="text" name="concert[contact_attributes][{{$index}}][phone_number]" id="concert_contact_attributes_{{$index}}_phone_number"
+            input type='button' ng-if="!$last" ng-click='delContacts($index)' value='削除'
+            input type='button' ng-if="$last" ng-click='addContacts($index)' value='追加' class="add_contact"
+          hr
+          =f.submit "作成"
+          
+          
+
+javascript:
+  $(function() {
+    var count = 0
+    $( "#hall_name" ).autocomplete({
+      source: 'api/concerts/get_hall'
+    });
+    $( "#conductor_name").autocomplete({
+      source: 'api/concerts/get_conductor'
+    });
+    $( "#concert_title").autocomplete({
+      source: 'api/concerts/get_concert_title'
+    });
+    
+    
+  //作曲家、曲
+    //作曲家
+    function composerAuto(){
+      $(".composer_field").autocomplete({
+        source: 'api/concerts/get_composer'
+      });
+    }
+    composerAuto()
+    //曲
+    function songAuto(){
+      $(".song_field").autocomplete({
+        source: 'api/concerts/get_song'
+      });
+    }
+    songAuto()  
+    //動的に追加された作曲家、曲フォームにautocompleteイベントを設定
+    function setComposerAndSongAuto(){
+      $(".add_composer").on('click', function(){
+        composerAuto();
+        songAuto();
+        setComposerAuto();
+      })
+    }
+    setComposerAndSongAuto();
+
+
+    
+    
+    //アーティスト
+    function artistAuto(){
+      $(".artist_field").autocomplete({
+        source: 'api/concerts/get_artist'
+      });
+    }
+    artistAuto()
+    
+    function setArtistAuto(){
+      $(".add_artist").on('click', function(){
+        artistAuto();
+        setArtistAuto();
+      })
+    }
+    setArtistAuto();
+    
+    
+    function contactAuto(){
+      $(".contact_field").autocomplete({
+        source: 'api/concerts/get_contact'
+      });
+    }
+    contactAuto()
+    
+    //動的に追加されたフォームにautocompleteイベントを設定
+    function setContactAuto(){
+      $(".add_contact").on('click', function(){
+        contactAuto();
+        setContactAuto();//動的に追加したフォームの追加ボタンに再度イベントを設定
+      })
+    }
+    setContactAuto();
+  });
