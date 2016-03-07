@@ -15,6 +15,7 @@ app.config(['$routeProvider','$locationProvider', ($routeProvider, $locationProv
   $routeProvider.when '/concerts/:concert_id', templateUrl: "<%= asset_path 'concerts/show.html' %>", controller: 'ConcertController', reloadOnSearch: false
   $routeProvider.when '/orchestras', templateUrl: "<%= asset_path 'orchestras/index.html'%>", controller: 'OrchestraListController', reloadOnSearch: false
   $routeProvider.when '/orchestras/:orchestra_id', templateUrl: "<%= asset_path 'orchestras/show.html'%>", controller: 'OrchestraController', reloadOnSearch: false
+  $routeProvider.when '/about', templateUrl: "<%= asset_path 'static/about.html'%>", controller: 'StaticController'
   $routeProvider.otherwise redirectTo: '/home'
 ])
 

@@ -10,6 +10,7 @@ json.concert do
   json.songs @concert.songs do |song|
     json.composer song.composer.name
     json.title song.title
+    json.id song.id
   end
   json.conductor @concert.conductor.name
   json.artists @concert.artists do |artist|

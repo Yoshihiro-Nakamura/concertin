@@ -10,9 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery2
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery_nested_form
 // require turbolinks
 //= require bootstrap
 //= require_directory ./angular

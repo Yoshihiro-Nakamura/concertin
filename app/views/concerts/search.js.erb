@@ -5,11 +5,13 @@ $('.divide_line').text("/");
 $('.day').text("<%=@concerts[0].start_datetime.strftime("%e")%>");
 $('.date').text("<%=@concerts[0].start_datetime.strftime("%a")%>");
 $('p.orchestra_name').text("<%=@concerts[0].orchestra.name%>");
+$('p.read_more').text("詳細を見る");
 <% if @concerts[0].conductor %>
   $('p.conductor_name').text("<%=@concerts[0].conductor.name%>");
 <%else%>
   $('p.conductor_name').text("指揮者無しのコンサート");
 <%end%>
+// コンサートが複数ある場合
 <% if @concerts[1] %>
   $('.other_concerts').addClass('visible');
   $('.count_concert').text("他<%= @concerts.length - 1%>公演");

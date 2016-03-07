@@ -9,4 +9,5 @@ class Concert < ActiveRecord::Base
   belongs_to :orchestra
   belongs_to :conductor
   belongs_to :hall
+  accepts_nested_attributes_for :artist_concerts
 end
